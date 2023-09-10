@@ -47,8 +47,7 @@ class ProductController extends Controller
         $newProduct->category_id = $request->category;
         $newProduct->save();
 
-
-        return redirect('product');
+        return redirect('product')->with('flash_message', 'Product Created!');
     }
 
     /**

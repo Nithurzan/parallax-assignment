@@ -2,7 +2,13 @@
 @section('content')
     <div class="container ">
         <div class="row ">
-
+            <div>
+                @if (\Session::has('flash_message'))
+                    <div class="bg-success p-3 mb-3 rounded text-white flash-msg">
+                        {{ \Session::get('flash_message') }}
+                    </div>
+                @endif
+            </div>
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">

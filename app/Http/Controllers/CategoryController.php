@@ -36,6 +36,8 @@ class CategoryController extends Controller
         $newCategory = new Category();
         $newCategory->name = $request->name;
         $newCategory->save();
+
+        return redirect('category')->with('flash_message', 'Category Created!');
     }
 
     /**
@@ -67,7 +69,7 @@ class CategoryController extends Controller
 
         $input = $request->all();
         $category->update($input);
-        return redirect('category')->with('flash_message', 'category Updated!');
+        return redirect('category')->with('flash_message', 'Category Updated!');
     }
 
     /**
@@ -79,7 +81,7 @@ class CategoryController extends Controller
         return redirect('category')->with('flash_message', 'category deleted!');
     }
 
-
+    // category add for api
     public function apiStore(Request $request)
     {
         $request->validate([

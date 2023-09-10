@@ -2,8 +2,14 @@
 @section('content')
     <div class="container">
         <div class="row">
-
-            <div class="col-md-9">
+            <div>
+                @if (\Session::has('flash_message'))
+                    <div class="bg-success p-3 mb-3 rounded text-white flash-msg">
+                        {{ \Session::get('flash_message') }}
+                    </div>
+                @endif
+            </div>
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
                         <h2>ABC Company Product Maintaine</h2>
@@ -15,6 +21,7 @@
                         <br />
                         <br />
                         <div class="table-responsive">
+
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -31,9 +38,10 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $product->name }}</td>
                                             <td>{{ $product->category_name }}</td>
-                                            <td>{{ $product->price}}</td>
+                                            <td>{{ $product->price }}</td>
                                             <td>
-                                                <a href="{{ url('/product/' . $product->id . '/edit') }}"title="Edit product">
+                                                <a
+                                                    href="{{ url('/product/' . $product->id . '/edit') }}"title="Edit product">
                                                     <button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o"
                                                             aria-hidden="true"></i>Edit</button>
                                                 </a>
